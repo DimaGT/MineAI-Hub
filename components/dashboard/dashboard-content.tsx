@@ -30,11 +30,6 @@ export function DashboardContent() {
   const [updatingProfile, setUpdatingProfile] = useState(false);
   const supabase = createClient();
 
-  useEffect(() => {
-    fetchStatistics();
-    fetchProfile();
-  }, []);
-
   const fetchStatistics = async () => {
     try {
       const {
@@ -76,6 +71,12 @@ export function DashboardContent() {
       console.error('Error fetching profile:', error);
     }
   };
+
+  useEffect(() => {
+    fetchStatistics();
+    fetchProfile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleUpdateProfile = async () => {
     setUpdatingProfile(true);
