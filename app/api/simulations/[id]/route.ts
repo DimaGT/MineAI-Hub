@@ -1,10 +1,7 @@
 import { createServerClient } from '@/lib/supabase/server';
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function PATCH(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function PATCH(request: NextRequest, { params }: { params: { id: string } }) {
   try {
     const supabase = await createServerClient();
 
@@ -27,7 +24,8 @@ export async function PATCH(
     // Update simulation
     const { data, error } = await supabase
       .from('simulations')
-      .update({ is_public })
+      // @ts-ignore - Supabase SSR types issue with update method
+      .update({ is_public: is_public })
       .eq('id', params.id)
       .eq('user_id', user.id)
       .select()
@@ -49,10 +47,7 @@ export async function PATCH(
   }
 }
 
-export async function DELETE(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
   try {
     const supabase = await createServerClient();
 
@@ -66,6 +61,7 @@ export async function DELETE(
     }
 
     // Verify the simulation belongs to the user before deleting
+    // @ts-ignore - Supabase SSR types issue with select method
     const { data: existingSimulation, error: fetchError } = await supabase
       .from('simulations')
       .select('user_id')
@@ -76,8 +72,11 @@ export async function DELETE(
       return NextResponse.json({ error: 'Simulation not found' }, { status: 404 });
     }
 
-    if (existingSimulation.user_id !== user.id) {
-      return NextResponse.json({ error: 'Forbidden: You do not own this simulation' }, { status: 403 });
+    if ((existingSimulation as any).user_id !== user.id) {
+      return NextResponse.json(
+        { error: 'Forbidden: You do not own this simulation' },
+        { status: 403 }
+      );
     }
 
     // Delete simulation
