@@ -25,6 +25,7 @@ export function SignUpForm() {
     try {
       // Use environment variable for production, fallback to window.location.origin for development
       const baseUrl = process.env.NEXT_PUBLIC_APP_URL || window.location.origin;
+      console.log('baseUrl', baseUrl);
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
@@ -74,6 +75,7 @@ export function SignUpForm() {
     try {
       // Use environment variable for production, fallback to window.location.origin for development
       const baseUrl = process.env.NEXT_PUBLIC_APP_URL || window.location.origin;
+      console.log('baseUrl', baseUrl);
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
