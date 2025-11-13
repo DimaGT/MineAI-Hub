@@ -122,7 +122,7 @@ export function SignUpForm() {
             />
           </div>
           {error && <div className='text-sm text-destructive'>{error}</div>}
-          <Button type='submit' className='w-full' disabled={loading}>
+          <Button type='submit' className='w-full text-black' disabled={loading}>
             {loading ? 'Signing up...' : 'Sign Up'}
           </Button>
         </form>

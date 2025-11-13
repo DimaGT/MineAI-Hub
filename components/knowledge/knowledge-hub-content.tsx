@@ -205,20 +205,9 @@ export function KnowledgeHubContent() {
           ) : filteredSimulations.length === 0 ? (
             <Card>
               <CardContent className='py-12 text-center space-y-4'>
-                <p className='text-muted-foreground'>No public simulations found.</p>
-                <div className='text-sm text-muted-foreground space-y-2'>
-                  <p>
-                    To make a simulation public, update the{' '}
-                    <code className='bg-secondary px-2 py-1 rounded'>is_public</code> field to{' '}
-                    <code className='bg-secondary px-2 py-1 rounded'>true</code> in Supabase.
-                  </p>
-                  <p>Total simulations in database: {simulations.length}</p>
-                  {simulations.length > 0 && (
-                    <p className='text-xs text-muted-foreground/70'>
-                      Note: Only simulations with is_public = true are shown here.
-                    </p>
-                  )}
-                </div>
+                <p className='text-muted-foreground'>
+                  No public simulations found at the moment.
+                </p>
               </CardContent>
             </Card>
           ) : (

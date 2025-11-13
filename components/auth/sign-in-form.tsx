@@ -94,7 +94,7 @@ export function SignInForm() {
             />
           </div>
           {error && <div className='text-sm text-destructive'>{error}</div>}
-          <Button type='submit' className='w-full' disabled={loading}>
+          <Button type='submit' className='w-full text-black' disabled={loading}>
             {loading ? 'Signing in...' : 'Sign In'}
           </Button>
         </form>

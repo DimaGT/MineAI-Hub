@@ -56,7 +56,7 @@ export function SimulationLoader() {
     const stageInterval = setInterval(() => {
       setCurrentStage((prev) => {
         if (prev >= stages.length - 1) {
-          return 0; // Reset to start
+          return prev; // Reset to start
         }
         return prev + 1;
       });

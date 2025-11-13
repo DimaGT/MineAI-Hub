@@ -87,7 +87,7 @@ export function Navigation({
               </Button>
             </Link>
             <Link href='/auth/signup'>
-              <Button className='bg-primary hover:opacity-90 text-white'>Get Started</Button>
+              <Button className='bg-primary hover:opacity-90 text-black'>Get Started</Button>
             </Link>
           </div>
         </div>

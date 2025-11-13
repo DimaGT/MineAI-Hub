@@ -32,7 +32,7 @@ export default function Home() {
 
           <div className='flex gap-4 justify-center pt-4'>
             <Link href='/dashboard'>
-              <Button size='lg' className='text-lg px-8 bg-primary hover:opacity-90 text-white'>
+              <Button size='lg' className='text-lg px-8 bg-primary hover:opacity-90 text-black'>
                 Start Excavation
                 <ArrowRight className='ml-2 h-5 w-5' />
               </Button>
