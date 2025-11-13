@@ -47,10 +47,12 @@ export function SignInForm() {
     setError(null);
 
     try {
+      // Use environment variable for production, fallback to window.location.origin for development
+      const baseUrl = process.env.NEXT_PUBLIC_APP_URL || window.location.origin;
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/auth/callback?next=/dashboard`
+          redirectTo: `${baseUrl}/auth/callback?next=/dashboard`
         }
       });
 
