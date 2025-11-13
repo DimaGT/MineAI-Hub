@@ -78,7 +78,7 @@ export function Navigation({
         <div className='container mx-auto px-4 py-6 flex justify-between items-center'>
           <div className='flex items-center gap-3'>
             <Mountain className='h-8 w-8 text-primary' />
-            <div className='text-2xl font-bold text-slate-900'>MineAI Hub</div>
+            <div className='text-2xl font-bold text-slate-900'>GeoSim</div>
           </div>
           <div className='flex gap-4'>
             <Link href='/auth/signin'>
@@ -103,7 +103,7 @@ export function Navigation({
           <div className='container mx-auto px-4 py-6 flex justify-between items-center'>
             <div className='flex items-center gap-3'>
               <Mountain className='h-8 w-8 text-primary' />
-              <div className='text-2xl font-bold text-slate-900'>MineAI Hub</div>
+              <div className='text-2xl font-bold text-slate-900'>GeoSim</div>
             </div>
             <div className='hidden md:flex items-center gap-4'>
               <div className='flex gap-2'>

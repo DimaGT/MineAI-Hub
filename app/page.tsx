@@ -86,8 +86,7 @@ export default function Home() {
       {/* Footer */}
       <footer className='container mx-auto px-4 py-8 text-center text-slate-500'>
         <p>
-          &copy; {new Date().getFullYear()} MineAI Hub. Unearthing knowledge, one simulation at a
-          time.
+          &copy; {new Date().getFullYear()} GeoSim. Unearthing knowledge, one simulation at a time.
         </p>
       </footer>
     </div>
