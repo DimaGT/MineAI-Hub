@@ -77,8 +77,8 @@ export function SimulationFormContent() {
               that help optimize your research and development processes.
             </p>
             <p className='text-gray-600 text-sm leading-relaxed'>
-              Whether you're working with metals, polymers, ceramics, or composites, our platform
-              provides detailed analysis and recommendations to guide your material science
+              Whether you&apos;re working with metals, polymers, ceramics, or composites, our
+              platform provides detailed analysis and recommendations to guide your material science
               research.
             </p>
           </div>

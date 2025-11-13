@@ -19,7 +19,7 @@ const content = [
           optimize your research and development processes.
         </p>
         <p>
-          Whether you're working with metals, polymers, ceramics, or composites, our platform
+          Whether you&apos;re working with metals, polymers, ceramics, or composites, our platform
           provides detailed analysis and recommendations to guide your material science research.
         </p>
         <p>

@@ -67,11 +67,29 @@ export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
   const scrollerRef = React.useRef<HTMLDivElement>(null);
   const [start, setStart] = React.useState(false);
 
-  React.useEffect(() => {
-    addAnimation();
-  }, []);
+  const getDirection = React.useCallback(() => {
+    if (containerRef.current) {
+      if (direction === 'left') {
+        containerRef.current.style.setProperty('--animation-direction', 'forwards');
+      } else {
+        containerRef.current.style.setProperty('--animation-direction', 'reverse');
+      }
+    }
+  }, [direction]);
 
-  function addAnimation() {
+  const getSpeed = React.useCallback(() => {
+    if (containerRef.current) {
+      if (speed === 'fast') {
+        containerRef.current.style.setProperty('--animation-duration', '20s');
+      } else if (speed === 'normal') {
+        containerRef.current.style.setProperty('--animation-duration', '40s');
+      } else {
+        containerRef.current.style.setProperty('--animation-duration', '80s');
+      }
+    }
+  }, [speed]);
+
+  const addAnimation = React.useCallback(() => {
     if (containerRef.current && scrollerRef.current) {
       const scrollerContent = Array.from(scrollerRef.current.children);
 
@@ -86,27 +104,11 @@ export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
       getSpeed();
       setStart(true);
     }
-  }
-  const getDirection = () => {
-    if (containerRef.current) {
-      if (direction === 'left') {
-        containerRef.current.style.setProperty('--animation-direction', 'forwards');
-      } else {
-        containerRef.current.style.setProperty('--animation-direction', 'reverse');
-      }
-    }
-  };
-  const getSpeed = () => {
-    if (containerRef.current) {
-      if (speed === 'fast') {
-        containerRef.current.style.setProperty('--animation-duration', '20s');
-      } else if (speed === 'normal') {
-        containerRef.current.style.setProperty('--animation-duration', '40s');
-      } else {
-        containerRef.current.style.setProperty('--animation-duration', '80s');
-      }
-    }
-  };
+  }, [getDirection, getSpeed]);
+
+  React.useEffect(() => {
+    addAnimation();
+  }, [addAnimation]);
 
   return (
     <div className={cn('w-full py-12 md:py-20 bg-gradient-to-br from-slate-50 via-green-50/30 to-slate-50', className)}>

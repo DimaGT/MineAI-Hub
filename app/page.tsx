@@ -93,7 +93,6 @@ const HomePage: React.FC = () => {
           </motion.div>
         </MaxWidthWrapper>
       </section>
-      
 
       <section className='w-full mt-10 md:mt-20'>
         <MaxWidthWrapper>
@@ -131,8 +130,8 @@ const HomePage: React.FC = () => {
                 </h2>
               </div>
               <p className='text-muted-foreground text-center max-w-3xl text-lg'>
-                GeoSim's engine uses AI-augmented geochemical modeling to simulate mineral behavior
-                across controlled variables including:
+                GeoSim&apos;s engine uses AI-augmented geochemical modeling to simulate mineral
+                behavior across controlled variables including:
               </p>
             </div>
             <Card className='border-2 border-primary/20 hover:border-primary/40 transition-colors duration-300 bg-gradient-to-br from-background to-muted/20'>

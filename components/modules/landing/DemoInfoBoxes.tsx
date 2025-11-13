@@ -38,7 +38,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: 'easeOut'
+      ease: 'easeOut' as const
     }
   }
 };
@@ -57,73 +57,69 @@ const featureItemVariants = {
 
 export const DemoInfoBoxes: React.FC = () => {
   return (
-    <div
-      className={cn(
-        'w-full  ',
-      )}
-    >
+    <div className={cn('w-full  ')}>
       <MaxWidthWrapper>
-      <motion.div
-        className='w-full'
-        variants={containerVariants}
-        initial='hidden'
-        whileInView='visible'
-        viewport={{ once: true, margin: '-100px' }}
-      >
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8'>
-          {/* What this demo shows */}
-          <motion.div variants={itemVariants}>
-            <Card className='h-full border-2 border-primary/20 hover:border-primary/40 transition-colors duration-300 bg-gradient-to-br from-background to-muted/20'>
-              <CardHeader>
-                <CardTitle className='text-2xl font-semibold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent'>
-                  What this demo shows:
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className='space-y-3'>
-                  {demoFeatures.map((feature, index) => (
-                    <motion.li
-                      key={feature}
-                      custom={index}
-                      variants={featureItemVariants}
-                      className='flex items-start gap-3'
-                    >
-                      <CheckCircle2 className='h-5 w-5 text-primary mt-0.5 flex-shrink-0' />
-                      <span className='text-muted-foreground leading-relaxed'>{feature}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </motion.div>
+        <motion.div
+          className='w-full'
+          variants={containerVariants}
+          initial='hidden'
+          whileInView='visible'
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8'>
+            {/* What this demo shows */}
+            <motion.div variants={itemVariants}>
+              <Card className='h-full border-2 border-primary/20 hover:border-primary/40 transition-colors duration-300 bg-gradient-to-br from-background to-muted/20'>
+                <CardHeader>
+                  <CardTitle className='text-2xl font-semibold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent'>
+                    What this demo shows:
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className='space-y-3'>
+                    {demoFeatures.map((feature, index) => (
+                      <motion.li
+                        key={feature}
+                        custom={index}
+                        variants={featureItemVariants}
+                        className='flex items-start gap-3'
+                      >
+                        <CheckCircle2 className='h-5 w-5 text-primary mt-0.5 flex-shrink-0' />
+                        <span className='text-muted-foreground leading-relaxed'>{feature}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </motion.div>
 
-          {/* What the full product will include */}
-          <motion.div variants={itemVariants}>
-            <Card className='h-full border-2 border-primary/20 hover:border-primary/40 transition-colors duration-300 bg-gradient-to-br from-background to-muted/20'>
-              <CardHeader>
-                <CardTitle className='text-2xl font-semibold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent'>
-                  What the full product will include:
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className='space-y-3'>
-                  {fullProductFeatures.map((feature, index) => (
-                    <motion.li
-                      key={feature}
-                      custom={index}
-                      variants={featureItemVariants}
-                      className='flex items-start gap-3'
-                    >
-                      <CheckCircle2 className='h-5 w-5 text-primary mt-0.5 flex-shrink-0' />
-                      <span className='text-muted-foreground leading-relaxed'>{feature}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </motion.div>
+            {/* What the full product will include */}
+            <motion.div variants={itemVariants}>
+              <Card className='h-full border-2 border-primary/20 hover:border-primary/40 transition-colors duration-300 bg-gradient-to-br from-background to-muted/20'>
+                <CardHeader>
+                  <CardTitle className='text-2xl font-semibold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent'>
+                    What the full product will include:
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className='space-y-3'>
+                    {fullProductFeatures.map((feature, index) => (
+                      <motion.li
+                        key={feature}
+                        custom={index}
+                        variants={featureItemVariants}
+                        className='flex items-start gap-3'
+                      >
+                        <CheckCircle2 className='h-5 w-5 text-primary mt-0.5 flex-shrink-0' />
+                        <span className='text-muted-foreground leading-relaxed'>{feature}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+        </motion.div>
       </MaxWidthWrapper>
     </div>
   );
