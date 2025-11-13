@@ -110,11 +110,11 @@ export function ExamplesContent() {
   };
 
   return (
-    <div className='min-h-screen bg-gradient-to-b from-blue-50 to-white'>
+    <div className='min-h-screen bg-gradient-to-b from-green-50 to-white'>
       <Navigation variant='back-to-dashboard' backUrl='/dashboard' backLabel='Back to Dashboard' />
 
       {/* Main Content */}
-      <div className='container mx-auto px-4 py-12'>
+      <div className='container mx-auto px-4 py-12 pt-24'>
         <div className='max-w-5xl mx-auto space-y-8'>
           {/* Header */}
           <div>

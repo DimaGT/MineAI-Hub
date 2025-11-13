@@ -156,8 +156,8 @@ export function PublicSimulationContent({ simulationId }: { simulationId: string
 
   if (loading) {
     return (
-      <div className='min-h-screen bg-gradient-to-b from-blue-50 to-white'>
-        <div className='container mx-auto px-4 py-12'>
+      <div className='min-h-screen bg-gradient-to-b from-green-50 to-white'>
+        <div className='container mx-auto px-4 py-12 pt-24'>
           <LoadingSpinner title='Loading simulation results...' />
         </div>
       </div>
@@ -166,8 +166,8 @@ export function PublicSimulationContent({ simulationId }: { simulationId: string
 
   if (!simulation) {
     return (
-      <div className='min-h-screen bg-gradient-to-b from-blue-50 to-white'>
-        <div className='container mx-auto px-4 py-12'>
+      <div className='min-h-screen bg-gradient-to-b from-green-50 to-white'>
+        <div className='container mx-auto px-4 py-12 pt-24'>
           <Card>
             <CardContent className='py-12 text-center'>
               <p className='text-muted-foreground'>Simulation not found.</p>
@@ -182,7 +182,7 @@ export function PublicSimulationContent({ simulationId }: { simulationId: string
   }
 
   return (
-    <div className='min-h-screen bg-gradient-to-b from-blue-50 to-white'>
+    <div className='min-h-screen bg-gradient-to-b from-green-50 to-white'>
       <Navigation
         variant='back-to-knowledge'
         backUrl='/knowledge'
@@ -190,8 +190,8 @@ export function PublicSimulationContent({ simulationId }: { simulationId: string
       />
 
       {/* Main Content */}
-      <div className='container mx-auto px-4 py-12'>
-        <div className='max-w-5xl mx-auto space-y-8' id='results-content'>
+      <div className='container mx-auto px-4 py-12 pt-24'>
+        <div className='max-w-6xl mx-auto space-y-8' id='results-content'>
           {/* Header */}
           <div className='space-y-4'>
             <div>
@@ -271,112 +271,118 @@ export function PublicSimulationContent({ simulationId }: { simulationId: string
           {/* Visualizations */}
           <div className='space-y-6'>
             {/* Efficiency vs Temperature */}
-            <Card>
-              <CardHeader>
-                <CardTitle className='flex items-center gap-2'>
-                  <BarChart3 className='h-5 w-5' />
-                  Extraction Efficiency vs Temperature
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {simulation.ai_result.temperatureData?.length > 0 ? (
-                  <ResponsiveContainer width='100%' height={400}>
-                    <LineChart
-                      data={simulation.ai_result.temperatureData}
-                      margin={{ bottom: 50, left: 20 }}
-                    >
-                      <CartesianGrid strokeDasharray='3 3' />
-                      <XAxis
-                        dataKey='temperature'
-                        label={{ value: 'Temperature (°C)', position: 'bottom', offset: 10 }}
-                        tick={{ dy: 10 }}
-                      />
-                      <YAxis label={{ value: 'Efficiency', angle: -90, position: 'insideLeft' }} />
-                      <Tooltip />
-                      <Legend wrapperStyle={{ paddingTop: '35px' }} />
-                      <Line
-                        type='monotone'
-                        dataKey='efficiency'
-                        stroke='#8884d8'
-                        strokeWidth={2}
-                        name='Efficiency'
-                        dot={{ r: 4 }}
-                      />
-                    </LineChart>
-                  </ResponsiveContainer>
-                ) : (
-                  <p className='text-muted-foreground text-center py-8'>
-                    No temperature data available
-                  </p>
-                )}
-              </CardContent>
-            </Card>
-
-            {/* Material Properties vs Temperature */}
-            {simulation.ai_result.materialPropertiesData &&
-              simulation.ai_result.materialPropertiesData.length > 0 && (
-                <Card>
-                  <CardHeader>
-                    <CardTitle className='flex items-center gap-2'>
-                      <BarChart3 className='h-5 w-5' />
-                      Material Properties vs Temperature
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
+            <div className='full-w flex  gap-6'>
+              <Card>
+                <CardHeader>
+                  <CardTitle className='flex items-center gap-2'>
+                    <BarChart3 className='h-5 w-5' />
+                    Extraction Efficiency vs Temperature
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {simulation.ai_result.temperatureData?.length > 0 ? (
                     <ResponsiveContainer width='100%' height={400}>
-                      <AreaChart
-                        data={simulation.ai_result.materialPropertiesData}
-                        margin={{ bottom: 50 }}
+                      <LineChart
+                        data={simulation.ai_result.temperatureData}
+                        margin={{ bottom: 50, left: 20 }}
                       >
                         <CartesianGrid strokeDasharray='3 3' />
                         <XAxis
                           dataKey='temperature'
-                          label={{
-                            value: 'Temperature (°C)',
-                            position: 'bottom',
-                            offset: 10
-                          }}
+                          label={{ value: 'Temperature (°C)', position: 'bottom', offset: 10 }}
                           tick={{ dy: 10 }}
                         />
-                        <YAxis />
+                        <YAxis
+                          label={{ value: 'Efficiency', angle: -90, position: 'insideLeft' }}
+                        />
                         <Tooltip />
                         <Legend wrapperStyle={{ paddingTop: '35px' }} />
-                        {simulation.ai_result.materialPropertiesData[0]?.hardness !== undefined && (
-                          <Area
-                            type='monotone'
-                            dataKey='hardness'
-                            stackId='1'
-                            stroke='#8884d8'
-                            fill='#8884d8'
-                            name='Hardness (HRC)'
-                          />
-                        )}
-                        {simulation.ai_result.materialPropertiesData[0]?.strength !== undefined && (
-                          <Area
-                            type='monotone'
-                            dataKey='strength'
-                            stackId='1'
-                            stroke='#82ca9d'
-                            fill='#82ca9d'
-                            name='Strength (MPa)'
-                          />
-                        )}
-                        {simulation.ai_result.materialPropertiesData[0]?.conductivity !==
-                          undefined && (
-                          <Area
-                            type='monotone'
-                            dataKey='conductivity'
-                            stackId='1'
-                            stroke='#ffc658'
-                            fill='#ffc658'
-                            name='Conductivity (W/m·K)'
-                          />
-                        )}
-                      </AreaChart>
+                        <Line
+                          type='monotone'
+                          dataKey='efficiency'
+                          stroke='#8884d8'
+                          strokeWidth={2}
+                          name='Efficiency'
+                          dot={{ r: 4 }}
+                        />
+                      </LineChart>
                     </ResponsiveContainer>
-                  </CardContent>
-                </Card>
-              )}
+                  ) : (
+                    <p className='text-muted-foreground text-center py-8'>
+                      No temperature data available
+                    </p>
+                  )}
+                </CardContent>
+              </Card>
+
+              {/* Material Properties vs Temperature */}
+              {simulation.ai_result.materialPropertiesData &&
+                simulation.ai_result.materialPropertiesData.length > 0 && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className='flex items-center gap-2'>
+                        <BarChart3 className='h-5 w-5' />
+                        Material Properties vs Temperature
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ResponsiveContainer width='100%' height={400}>
+                        <AreaChart
+                          data={simulation.ai_result.materialPropertiesData}
+                          margin={{ bottom: 50 }}
+                        >
+                          <CartesianGrid strokeDasharray='3 3' />
+                          <XAxis
+                            dataKey='temperature'
+                            label={{
+                              value: 'Temperature (°C)',
+                              position: 'bottom',
+                              offset: 10
+                            }}
+                            tick={{ dy: 10 }}
+                          />
+                          <YAxis />
+                          <Tooltip />
+                          <Legend wrapperStyle={{ paddingTop: '35px' }} />
+                          {simulation.ai_result.materialPropertiesData[0]?.hardness !==
+                            undefined && (
+                            <Area
+                              type='monotone'
+                              dataKey='hardness'
+                              stackId='1'
+                              stroke='#8884d8'
+                              fill='#8884d8'
+                              name='Hardness (HRC)'
+                            />
+                          )}
+                          {simulation.ai_result.materialPropertiesData[0]?.strength !==
+                            undefined && (
+                            <Area
+                              type='monotone'
+                              dataKey='strength'
+                              stackId='1'
+                              stroke='#82ca9d'
+                              fill='#82ca9d'
+                              name='Strength (MPa)'
+                            />
+                          )}
+                          {simulation.ai_result.materialPropertiesData[0]?.conductivity !==
+                            undefined && (
+                            <Area
+                              type='monotone'
+                              dataKey='conductivity'
+                              stackId='1'
+                              stroke='#ffc658'
+                              fill='#ffc658'
+                              name='Conductivity (W/m·K)'
+                            />
+                          )}
+                        </AreaChart>
+                      </ResponsiveContainer>
+                    </CardContent>
+                  </Card>
+                )}
+            </div>
 
             {/* Material Properties Comparison */}
             {simulation.ai_result.materialPropertiesData &&

@@ -61,25 +61,45 @@ export function SimulationFormContent() {
   };
 
   return (
-    <div className='min-h-screen bg-gradient-to-b from-blue-50 to-white'>
+    <div className='min-h-screen bg-gradient-to-b from-green-50 to-white'>
       <Navigation />
 
       {/* Main Content */}
-      <div className='container mx-auto px-4 py-12'>
-        <Card className='max-w-4xl mx-auto'>
-          {loading ? null : <CardHeader>
-            <CardTitle className='flex items-center gap-2'>
-              <FlaskConical className='h-6 w-6' />
-              Run Simulation
-            </CardTitle>
-            <CardDescription>
-              Enter your research parameters to generate an AI-powered simulation report
-              <br />
-              <Link href='/examples' className='text-primary hover:underline text-sm'>
-                📖 View example queries →
-              </Link>
-            </CardDescription>
-          </CardHeader>}
+      <div className='container mx-auto px-4 py-12 pt-24'>
+        {/* Description Section */}
+        <div className='max-w-6xl mx-auto mb-8'>
+          <div className='bg-white rounded-lg border border-gray-200 p-6 shadow-sm'>
+            <h2 className='text-2xl font-bold text-gray-900 mb-3'>Simulation Platform</h2>
+            <p className='text-gray-700 leading-relaxed mb-4'>
+              Our advanced simulation platform enables you to model and analyze material processing
+              scenarios with AI-powered insights. Enter your research parameters, material
+              composition, and experimental conditions to generate comprehensive simulation reports
+              that help optimize your research and development processes.
+            </p>
+            <p className='text-gray-600 text-sm leading-relaxed'>
+              Whether you're working with metals, polymers, ceramics, or composites, our platform
+              provides detailed analysis and recommendations to guide your material science
+              research.
+            </p>
+          </div>
+        </div>
+
+        <Card className='max-w-6xl mx-auto'>
+          {loading ? null : (
+            <CardHeader>
+              <CardTitle className='flex items-center gap-2'>
+                <FlaskConical className='h-6 w-6' />
+                Run Simulation
+              </CardTitle>
+              <CardDescription>
+                Enter your research parameters to generate an AI-powered simulation report
+                <br />
+                <Link href='/examples' className='text-primary hover:underline text-sm'>
+                  📖 View example queries →
+                </Link>
+              </CardDescription>
+            </CardHeader>
+          )}
           <CardContent>
             {loading ? (
               <SimulationLoader />

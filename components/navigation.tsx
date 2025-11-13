@@ -74,7 +74,7 @@ export function Navigation({
   if (variant === 'home' && !loading && !isAuthenticated) {
     // Home page navigation for unauthenticated users
     return (
-      <nav className={`${navClassName} ${className}`}>
+      <nav className={` ${navClassName} ${className}`}>
         <div className='container mx-auto px-4 py-6 flex justify-between items-center'>
           <div className='flex items-center gap-3'>
             <Mountain className='h-8 w-8 text-primary' />
@@ -208,7 +208,7 @@ export function Navigation({
   if (variant === 'back-to-dashboard') {
     // Navigation with back button to dashboard
     return (
-      <nav className={`${navClassName} ${className}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 ${navClassName} ${className}`}>
         <div className='container mx-auto px-4 py-4'>
           <div className='flex justify-between items-center'>
             <div className='flex items-center gap-4 md:gap-8'>
@@ -320,7 +320,7 @@ export function Navigation({
   if (variant === 'back-to-knowledge') {
     // Navigation with back button to knowledge hub
     return (
-      <nav className={`${navClassName} ${className}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 ${navClassName} ${className}`}>
         <div className='container mx-auto px-4 py-4'>
           <div className='flex justify-between items-center'>
             <div className='flex items-center gap-4 md:gap-8'>
@@ -384,7 +384,7 @@ export function Navigation({
   // Default navigation (full navigation for authenticated users)
   if (loading) {
     return (
-      <nav className={`${navClassName} ${className}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 ${navClassName} ${className}`}>
         <div className='container mx-auto px-4 py-4'>
           <div className='flex justify-between items-center'>
             <Link href='/' className='flex items-center gap-3'>
@@ -398,7 +398,7 @@ export function Navigation({
   }
 
   return (
-    <nav className={`${navClassName} ${className}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 ${navClassName} ${className}`}>
       <div className='container mx-auto px-4 py-4'>
         <div className='flex justify-between items-center'>
           <div className='flex items-center gap-4 md:gap-8'>

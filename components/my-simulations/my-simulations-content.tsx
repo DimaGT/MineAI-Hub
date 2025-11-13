@@ -184,7 +184,7 @@ export function MySimulationsContent() {
       <Navigation className='bg-white/95 backdrop-blur-sm' />
 
       {/* Main Content */}
-      <div className='container mx-auto px-4 py-12'>
+      <div className='container mx-auto px-4 py-12 pt-24'>
         <div className='max-w-7xl mx-auto'>
           {/* Header */}
           <div className='mb-8 flex justify-between items-start'>
@@ -199,6 +199,11 @@ export function MySimulationsContent() {
                   </h1>
                   <p className='text-sm text-muted-foreground mt-1'>
                     Personal workspace • Manage your research
+                  </p>
+                  <p className='text-sm text-gray-600 mt-3 max-w-2xl leading-relaxed'>
+                    Access and manage all your simulation results in one place. View detailed
+                    reports, share your findings with the research community, or keep them private.
+                    Track your research progress and organize your simulations for easy reference.
                   </p>
                 </div>
               </div>

@@ -171,11 +171,11 @@ export function ResultsContent({ simulationId }: { simulationId: string }) {
   const temperatureData = simulation.ai_result.temperatureData || [];
 
   return (
-    <div className='min-h-screen bg-gradient-to-b from-blue-50 to-white'>
+    <div className='min-h-screen bg-gradient-to-b from-green-50 to-white'>
       <Navigation variant='back-to-dashboard' backUrl='/dashboard' backLabel='Back to Dashboard' />
 
       {/* Main Content */}
-      <div className='container mx-auto px-4 py-12' id='results-content'>
+      <div className='container mx-auto px-4 py-12 pt-24' id='results-content'>
         <div className='max-w-5xl mx-auto space-y-6'>
           {/* Header */}
           <div className='flex justify-between items-start'>
@@ -253,74 +253,22 @@ export function ResultsContent({ simulationId }: { simulationId: string }) {
           </Card>
 
           {/* Visualizations */}
-          <div className='full-w flex flex-col gap-6'>
+          <div className='full-w flex flex-col gap-6 '>
             {/* Efficiency vs Temperature */}
-            <Card>
-              <CardHeader>
-                <CardTitle className='flex items-center gap-2'>
-                  <BarChart3 className='h-5 w-5' />
-                  Extraction Efficiency vs Temperature
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {temperatureData.length > 0 ? (
-                  <ResponsiveContainer width='100%' height={400}>
-                    <LineChart
-                      data={temperatureData}
-                      margin={{ top: 20, bottom: 50, left: 20, right: 20 }}
-                    >
-                      <CartesianGrid strokeDasharray='3 3' />
-                      <XAxis
-                        dataKey='temperature'
-                        label={{
-                          value: 'Temperature (°C)',
-                          position: 'bottom',
-                          offset: 10
-                        }}
-                        tick={{ dy: 10 }}
-                      />
-                      <YAxis
-                        label={{ value: 'Efficiency', angle: -90, position: 'insideLeft' }}
-                        domain={[
-                          0,
-                          Math.min(1, Math.max(...temperatureData.map(d => d.efficiency)) + 0.1)
-                        ]}
-                      />
-                      <Tooltip />
-                      <Legend wrapperStyle={{ paddingTop: '35px' }} />
-                      <Line
-                        type='monotone'
-                        dataKey='efficiency'
-                        stroke='hsl(var(--primary))'
-                        strokeWidth={2}
-                        name='Efficiency'
-                        dot={{ r: 4 }}
-                      />
-                    </LineChart>
-                  </ResponsiveContainer>
-                ) : (
-                  <p className='text-muted-foreground text-center py-8'>
-                    No temperature data available
-                  </p>
-                )}
-              </CardContent>
-            </Card>
-
-            {/* Material Properties vs Temperature */}
-            {simulation.ai_result.materialPropertiesData &&
-              simulation.ai_result.materialPropertiesData.length > 0 && (
-                <Card>
-                  <CardHeader>
-                    <CardTitle className='flex items-center gap-2'>
-                      <BarChart3 className='h-5 w-5' />
-                      Material Properties vs Temperature
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
+            <div className='full-w flex flex-col gap-6'>
+              <Card>
+                <CardHeader>
+                  <CardTitle className='flex items-center gap-2'>
+                    <BarChart3 className='h-5 w-5' />
+                    Extraction Efficiency vs Temperature
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {temperatureData.length > 0 ? (
                     <ResponsiveContainer width='100%' height={400}>
-                      <AreaChart
-                        data={simulation.ai_result.materialPropertiesData}
-                        margin={{ bottom: 50 }}
+                      <LineChart
+                        data={temperatureData}
+                        margin={{ top: 20, bottom: 50, left: 20, right: 20 }}
                       >
                         <CartesianGrid strokeDasharray='3 3' />
                         <XAxis
@@ -332,46 +280,102 @@ export function ResultsContent({ simulationId }: { simulationId: string }) {
                           }}
                           tick={{ dy: 10 }}
                         />
-                        <YAxis />
+                        <YAxis
+                          label={{ value: 'Efficiency', angle: -90, position: 'insideLeft' }}
+                          domain={[
+                            0,
+                            Math.min(1, Math.max(...temperatureData.map(d => d.efficiency)) + 0.1)
+                          ]}
+                        />
                         <Tooltip />
                         <Legend wrapperStyle={{ paddingTop: '35px' }} />
-                        {simulation.ai_result.materialPropertiesData[0]?.hardness !== undefined && (
-                          <Area
-                            type='monotone'
-                            dataKey='hardness'
-                            stackId='1'
-                            stroke='#8884d8'
-                            fill='#8884d8'
-                            name='Hardness (HRC)'
-                          />
-                        )}
-                        {simulation.ai_result.materialPropertiesData[0]?.strength !== undefined && (
-                          <Area
-                            type='monotone'
-                            dataKey='strength'
-                            stackId='1'
-                            stroke='#82ca9d'
-                            fill='#82ca9d'
-                            name='Strength (MPa)'
-                          />
-                        )}
-                        {simulation.ai_result.materialPropertiesData[0]?.conductivity !==
-                          undefined && (
-                          <Area
-                            type='monotone'
-                            dataKey='conductivity'
-                            stackId='1'
-                            stroke='#ffc658'
-                            fill='#ffc658'
-                            name='Conductivity (W/m·K)'
-                          />
-                        )}
-                      </AreaChart>
+                        <Line
+                          type='monotone'
+                          dataKey='efficiency'
+                          stroke='hsl(var(--primary))'
+                          strokeWidth={2}
+                          name='Efficiency'
+                          dot={{ r: 4 }}
+                        />
+                      </LineChart>
                     </ResponsiveContainer>
-                  </CardContent>
-                </Card>
-              )}
-
+                  ) : (
+                    <p className='text-muted-foreground text-center py-8'>
+                      No temperature data available
+                    </p>
+                  )}
+                </CardContent>
+              </Card>
+            </div>
+            <div className='full-w flex flex-col gap-6'>
+              {/* Material Properties vs Temperature */}
+              {simulation.ai_result.materialPropertiesData &&
+                simulation.ai_result.materialPropertiesData.length > 0 && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className='flex items-center gap-2'>
+                        <BarChart3 className='h-5 w-5' />
+                        Material Properties vs Temperature
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ResponsiveContainer width='100%' height={400}>
+                        <AreaChart
+                          data={simulation.ai_result.materialPropertiesData}
+                          margin={{ bottom: 50 }}
+                        >
+                          <CartesianGrid strokeDasharray='3 3' />
+                          <XAxis
+                            dataKey='temperature'
+                            label={{
+                              value: 'Temperature (°C)',
+                              position: 'bottom',
+                              offset: 10
+                            }}
+                            tick={{ dy: 10 }}
+                          />
+                          <YAxis />
+                          <Tooltip />
+                          <Legend wrapperStyle={{ paddingTop: '35px' }} />
+                          {simulation.ai_result.materialPropertiesData[0]?.hardness !==
+                            undefined && (
+                            <Area
+                              type='monotone'
+                              dataKey='hardness'
+                              stackId='1'
+                              stroke='#8884d8'
+                              fill='#8884d8'
+                              name='Hardness (HRC)'
+                            />
+                          )}
+                          {simulation.ai_result.materialPropertiesData[0]?.strength !==
+                            undefined && (
+                            <Area
+                              type='monotone'
+                              dataKey='strength'
+                              stackId='1'
+                              stroke='#82ca9d'
+                              fill='#82ca9d'
+                              name='Strength (MPa)'
+                            />
+                          )}
+                          {simulation.ai_result.materialPropertiesData[0]?.conductivity !==
+                            undefined && (
+                            <Area
+                              type='monotone'
+                              dataKey='conductivity'
+                              stackId='1'
+                              stroke='#ffc658'
+                              fill='#ffc658'
+                              name='Conductivity (W/m·K)'
+                            />
+                          )}
+                        </AreaChart>
+                      </ResponsiveContainer>
+                    </CardContent>
+                  </Card>
+                )}
+            </div>
             {/* Material Properties Comparison (if multiple properties) */}
             {simulation.ai_result.materialPropertiesData &&
               simulation.ai_result.materialPropertiesData.length > 0 &&

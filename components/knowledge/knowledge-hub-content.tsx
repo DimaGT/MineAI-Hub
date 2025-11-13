@@ -134,7 +134,7 @@ export function KnowledgeHubContent() {
       <Navigation className='shadow-sm' />
 
       {/* Main Content */}
-      <div className='container mx-auto px-4 py-12'>
+      <div className='container mx-auto px-4 py-12 pt-24'>
         <div className='max-w-7xl mx-auto'>
           {/* Header */}
           <div className='mb-10'>
@@ -146,8 +146,14 @@ export function KnowledgeHubContent() {
                   </div>
                   <div>
                     <h1 className='text-3xl font-bold mb-2 text-slate-900'>Knowledge Hub</h1>
-                    <p className='text-slate-600'>
+                    <p className='text-slate-600 mb-3'>
                       Discover and explore public research simulations
+                    </p>
+                    <p className='text-sm text-slate-600 mb-3 max-w-2xl leading-relaxed'>
+                      Browse a curated collection of public simulations shared by researchers
+                      worldwide. Learn from real-world case studies, explore different material
+                      types and processing methods, and gain insights from the research community.
+                      Each simulation includes detailed parameters, results, and analysis.
                     </p>
                     <div className='flex items-center gap-2 mt-2 text-sm text-slate-500'>
                       <span className='font-medium text-slate-900'>{simulations.length}</span>

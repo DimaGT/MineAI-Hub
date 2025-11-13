@@ -253,3 +253,14 @@
 .animate-layer-shift {
   animation: layer-shift 10s ease-in-out infinite;
 }
+
+/* Infinite Moving Cards Animation */
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
+  }
+}
+
+.animate-scroll {
+  animation: scroll var(--animation-duration, 40s) linear infinite var(--animation-direction, forwards);
+}

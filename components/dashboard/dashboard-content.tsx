@@ -104,11 +104,11 @@ export function DashboardContent() {
   };
 
   return (
-    <div className='min-h-screen bg-gradient-to-b from-blue-50 to-white'>
+    <div className='min-h-screen bg-gradient-to-b from-green-50 to-white'>
       <Navigation />
 
       {/* Main Content */}
-      <div className='container mx-auto px-4 py-12'>
+      <div className='container mx-auto px-4 py-12 pt-24'>
         <div className='max-w-7xl mx-auto space-y-6'>
           {/* Statistics and Profile Section */}
           <div className='grid md:grid-cols-2 gap-6'>
