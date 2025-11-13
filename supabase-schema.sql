@@ -1,4 +1,4 @@
--- SimuHub AI Database Schema
+-- GeoSim Database Schema
 -- Run this SQL in your Supabase SQL Editor
 
 -- Create simulations table

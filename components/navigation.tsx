@@ -212,8 +212,9 @@ export function Navigation({
         <div className='container mx-auto px-4 py-4'>
           <div className='flex justify-between items-center'>
             <div className='flex items-center gap-4 md:gap-8'>
-              <Link href='/' className='text-xl md:text-2xl font-bold text-primary'>
-                SimuHub AI
+              <Link href='/' className='flex items-center gap-3'>
+                <Mountain className='h-8 w-8 text-primary' />
+                <div className='text-2xl font-bold text-slate-900'>GeoSim</div>
               </Link>
               <div className='hidden md:flex gap-4'>
                 <Link href='/dashboard'>
@@ -323,8 +324,9 @@ export function Navigation({
         <div className='container mx-auto px-4 py-4'>
           <div className='flex justify-between items-center'>
             <div className='flex items-center gap-4 md:gap-8'>
-              <Link href='/' className='text-xl md:text-2xl font-bold text-primary'>
-                SimuHub AI
+              <Link href='/' className='flex items-center gap-3'>
+                <Mountain className='h-8 w-8 text-primary' />
+                <div className='text-2xl font-bold text-slate-900'>GeoSim</div>
               </Link>
               <Link href='/knowledge' className='hidden md:block'>
                 <Button variant='ghost'>
@@ -385,8 +387,9 @@ export function Navigation({
       <nav className={`${navClassName} ${className}`}>
         <div className='container mx-auto px-4 py-4'>
           <div className='flex justify-between items-center'>
-            <Link href='/' className='text-xl md:text-2xl font-bold text-primary'>
-              SimuHub AI
+            <Link href='/' className='flex items-center gap-3'>
+              <Mountain className='h-8 w-8 text-primary' />
+              <div className='text-2xl font-bold text-slate-900'>GeoSim</div>
             </Link>
           </div>
         </div>
@@ -399,8 +402,9 @@ export function Navigation({
       <div className='container mx-auto px-4 py-4'>
         <div className='flex justify-between items-center'>
           <div className='flex items-center gap-4 md:gap-8'>
-            <Link href='/' className='text-xl md:text-2xl font-bold text-primary'>
-              SimuHub AI
+            <Link href='/' className='flex items-center gap-3'>
+              <Mountain className='h-8 w-8 text-primary' />
+              <div className='text-2xl font-bold text-slate-900'>GeoSim</div>
             </Link>
             {/* Desktop Navigation */}
             <div className='hidden md:flex gap-4'>

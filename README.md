@@ -1,4 +1,4 @@
-# SimuHub AI
+# GeoSim
 
 AI-powered platform for scientific experiment simulation & knowledge discovery.
 
@@ -15,11 +15,13 @@ AI-powered platform for scientific experiment simulation & knowledge discovery.
 ## Features
 
 ### 🔐 Authentication
+
 - Email/password sign up and sign in
 - Google OAuth authentication
 - Protected routes for dashboard, results, and knowledge hub
 
 ### 📊 Dashboard
+
 - Interactive form for simulation parameters:
   - Research Goal
   - Material Type
@@ -28,6 +30,7 @@ AI-powered platform for scientific experiment simulation & knowledge discovery.
 - One-click simulation execution
 
 ### 🤖 AI Simulation API
+
 - GPT-4 powered simulation generation
 - Automatic report generation with:
   - Process summary
@@ -36,16 +39,19 @@ AI-powered platform for scientific experiment simulation & knowledge discovery.
   - Confidence scores
 
 ### 📈 Results Page
+
 - Detailed AI-generated reports
 - Interactive charts (Extraction Efficiency vs Temperature)
 - PDF download functionality
 
 ### 📚 Knowledge Hub
+
 - Browse public simulations
 - Search and filter functionality
 - Material type filtering
 
 ### 🎨 Landing Page
+
 - Modern hero section
 - Feature highlights
 - Call-to-action buttons
@@ -185,6 +191,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 4. Deploy!
 
 The project is optimized for Vercel deployment with:
+
 - Automatic API route handling
 - Serverless function support
 - Edge middleware support

@@ -1,22 +1,22 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import { Providers } from "@/components/providers";
+import { Providers } from '@/components/providers';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "SimuHub AI - AI-Powered Scientific Simulation Platform",
-  description: "AI-powered platform for scientific experiment simulation & knowledge discovery.",
+  title: 'GeoSim - AI-Powered Scientific Simulation Platform',
+  description: 'AI-powered platform for scientific experiment simulation & knowledge discovery.'
 };
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <body className={inter.className}>
         <Providers>{children}</Providers>
       </body>
