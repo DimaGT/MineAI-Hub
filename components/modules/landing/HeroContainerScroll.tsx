@@ -83,9 +83,57 @@ export const HeroContainerScroll: React.FC<HeroContainerScrollProps> = ({}) => {
           </div>
         </motion.div>
         <Card rotate={rotate} scale={scale} />
+        <div className='flex justify-center items-center gap-4 mt-16 flex-wrap'>
+          <AnimatedButton href='/simulate' direction='left' delay={0}>
+            <Button
+              size='lg'
+              className='text-lg px-8 py-6 transition-opacity duration-200 bg-gradient-to-b from-primary to-primary/90 '
+            >
+              Launch Demo Simulation
+            </Button>
+          </AnimatedButton>
+          <AnimatedButton href='/knowledge' direction='right' delay={0.1}>
+            <Button
+              size='lg'
+              variant='outline'
+              className='text-lg px-8 py-6 transition-opacity duration-200 border-2'
+            >
+              Explore Prototype
+            </Button>
+          </AnimatedButton>
+        </div>
         {/* <div className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-t dark:from-background z-10"></div> */}
       </div>
     </div>
+  );
+};
+
+interface AnimatedButtonProps {
+  href: string;
+  direction: 'left' | 'right';
+  delay: number;
+  children: React.ReactNode;
+}
+
+const AnimatedButton: React.FC<AnimatedButtonProps> = ({ href, direction, delay, children }) => {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start 0.9', 'start 0.8']
+  });
+
+  const x = useTransform(scrollYProgress, [0, 1], direction === 'left' ? [-100, 0] : [100, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 0.5, 0.8, 1]);
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{ x, opacity }}
+      whileHover={{ opacity: 0.9 }}
+      whileTap={{ scale: 0.98 }}
+    >
+      <Link href={href}>{children}</Link>
+    </motion.div>
   );
 };
 
@@ -110,27 +158,6 @@ const Card: React.FC<CardProps> = ({ rotate, scale }) => {
         height={1200}
         className='rounded-tl-2xl rounded-tr-2xl border-2 border-muted flex-shrink-0'
       />
-      <motion.div
-        className='flex justify-center mt-6 absolute bottom-12 left-0 right-0 drop-shadow-lg'
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
-      >
-        <Link href='/simulate'>
-          <motion.div
-            whileHover={{ scale: 1.06, boxShadow: '0 8px 32px 0 rgba(87,255,146,0.25)' }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ type: 'spring', stiffness: 250, damping: 15 }}
-          >
-            <Button
-              size='lg'
-              className='text-lg px-8 py-6 shadow-lg shadow-primary/30 hover:shadow-2xl hover:shadow-primary/40 transition-shadow duration-300 bg-gradient-to-b from-primary to-primary/90 border-2 border-[#fafafa]'
-            >
-              Launch Demo Simulation
-            </Button>
-          </motion.div>
-        </Link>
-      </motion.div>
     </motion.div>
   );
 };

@@ -229,9 +229,9 @@ export function Navigation({
                 <Link href='/knowledge'>
                   <Button variant='ghost'>Knowledge Hub</Button>
                 </Link>
-                <Link href='/examples'>
+                {/* <Link href='/examples'>
                   <Button variant='ghost'>Examples</Button>
-                </Link>
+                </Link> */}
               </div>
             </div>
             <div className='flex items-center gap-2'>
@@ -292,11 +292,11 @@ export function Navigation({
                         Knowledge Hub
                       </Button>
                     </Link>
-                    <Link href='/examples' onClick={handleLinkClick}>
+                    {/* <Link href='/examples' onClick={handleLinkClick}>
                       <Button variant='ghost' className='w-full justify-start'>
                         Examples
                       </Button>
-                    </Link>
+                    </Link> */}
                     <Link
                       href={backUrl || '/dashboard'}
                       onClick={handleLinkClick}
@@ -420,9 +420,9 @@ export function Navigation({
               <Link href='/knowledge'>
                 <Button variant='ghost'>Knowledge Hub</Button>
               </Link>
-              <Link href='/examples'>
+              {/* <Link href='/examples'>
                 <Button variant='ghost'>Examples</Button>
-              </Link>
+              </Link> */}
             </div>
           </div>
           <div className='flex items-center gap-2'>
@@ -484,11 +484,11 @@ export function Navigation({
                       Knowledge Hub
                     </Button>
                   </Link>
-                  <Link href='/examples' onClick={handleLinkClick}>
+                  {/* <Link href='/examples' onClick={handleLinkClick}>
                     <Button variant='ghost' className='w-full justify-start'>
                       Examples
                     </Button>
-                  </Link>
+                  </Link> */}
                   <Button
                     variant='ghost'
                     onClick={handleSignOut}

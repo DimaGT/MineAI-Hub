@@ -110,7 +110,7 @@ export function ExamplesContent() {
   };
 
   return (
-    <div className='min-h-screen bg-gradient-to-b from-green-50 to-white'>
+    <div className='min-h-screen bg-gradient-to-b from-[#f8fefa] to-white'>
       <Navigation variant='back-to-dashboard' backUrl='/dashboard' backLabel='Back to Dashboard' />
 
       {/* Main Content */}

@@ -22,8 +22,8 @@ const stages: SimulationStage[] = [
   },
   {
     icon: <Brain className="h-5 w-5" />,
-    message: "Processing with AI...",
-    description: "GPT-4 is analyzing your simulation",
+    message: "AI-Driven Simulation Engine...",
+    description: "Neural analysis for optimal outcomes.",
   },
   {
     icon: <Sparkles className="h-5 w-5" />,

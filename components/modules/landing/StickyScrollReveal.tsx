@@ -63,7 +63,7 @@ const content = [
     content: (
       <div className='h-full w-full  flex items-center justify-center text-white'>
         <Image
-          src='/assets/feature-2.png'
+          src='/assets/preview.png'
           fill
           className='h-full w-full object-fit rounded-md border'
           alt='My Simulations'
@@ -93,7 +93,7 @@ const content = [
     content: (
       <div className='h-full w-full rounded-md flex items-center justify-center text-white'>
         <Image
-          src='/assets/preview.png'
+          src='/assets/feature-2.png'
           fill
           className='h-full w-full object-fit rounded-md border'
           alt='Knowledge Hub'
@@ -141,14 +141,14 @@ const content = [
         <Image
           src='/assets/preview.png'
           fill
-          className='h-full w-full object-cover rounded-md border blur-md'
+          className='h-full w-full object-cover rounded-md border blur-sm'
           alt='HVP Reaction Modeling'
           unoptimized
         />
-        <div className='absolute inset-0 bg-primary/20 flex items-center justify-center'>
+        <div className='absolute inset-0  flex items-center justify-center'>
           <Badge
             variant='secondary'
-            className='bg-primary/30 text-primary border-primary/50 px-6 py-2 text-base font-semibold backdrop-blur-sm'
+            className='bg-primary/30 text-black border-primary/50 px-6 py-2 text-base font-semibold backdrop-blur-md'
           >
             Coming Soon
           </Badge>
@@ -196,7 +196,7 @@ export const StickyScroll = ({
                 animate={{
                   opacity: activeCard === index ? 1 : 0.3
                 }}
-                className='text-2xl font-bold'
+                className='text-2xl font-bold text-primary'
               >
                 {item.title}
               </motion.h2>

@@ -104,7 +104,7 @@ export function DashboardContent() {
   };
 
   return (
-    <div className='min-h-screen bg-gradient-to-b from-green-50 to-white'>
+    <div className='min-h-screen bg-gradient-to-b from-[#f8fefa] to-white'>
       <Navigation />
 
       {/* Main Content */}

@@ -17,10 +17,13 @@ interface Simulation {
   title: string | null;
   user_id: string;
   input_data: {
-    goal: string;
-    materialType: string;
-    composition: string;
-    conditions: string;
+    goal?: string;
+    materialType?: string;
+    mineralType?: string;
+    template?: string;
+    composition?: string;
+    conditions?: string;
+    [key: string]: any;
   };
   ai_result: {
     confidenceScore: number;
@@ -116,21 +119,32 @@ export function KnowledgeHubContent() {
   }, [fetchSimulations]);
 
   const filteredSimulations = simulations.filter(sim => {
+    const mineralType = sim.input_data.mineralType || sim.input_data.materialType || '';
+    const goal = sim.input_data.goal || '';
+    const title = sim.title || '';
+    
     const matchesSearch =
       !searchQuery ||
-      sim.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      sim.input_data.goal.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      sim.input_data.materialType.toLowerCase().includes(searchQuery.toLowerCase());
+      title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      goal.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      mineralType.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      sim.input_data.template?.toLowerCase().includes(searchQuery.toLowerCase());
 
-    const matchesFilter = filterType === 'all' || sim.input_data.materialType === filterType;
+    const matchesFilter = filterType === 'all' || mineralType === filterType;
 
     return matchesSearch && matchesFilter;
   });
 
-  const uniqueMaterialTypes = Array.from(new Set(simulations.map(s => s.input_data.materialType)));
+  const uniqueMaterialTypes = Array.from(
+    new Set(
+      simulations
+        .map(s => s.input_data.mineralType || s.input_data.materialType)
+        .filter(Boolean)
+    )
+  );
 
   return (
-    <div className='min-h-screen bg-slate-50'>
+    <div className='min-h-screen  bg-gradient-to-b from-[#f8fefa] to-white'>
       <Navigation className='shadow-sm' />
 
       {/* Main Content */}
@@ -141,9 +155,6 @@ export function KnowledgeHubContent() {
             <div className='bg-white rounded-lg p-8 border border-slate-200'>
               <div className='flex items-center justify-between'>
                 <div className='flex items-center gap-4'>
-                  <div className='p-3 rounded-lg bg-primary/10 text-primary'>
-                    <BookOpen className='h-7 w-7' />
-                  </div>
                   <div>
                     <h1 className='text-3xl font-bold mb-2 text-slate-900'>Knowledge Hub</h1>
                     <p className='text-slate-600 mb-3'>
@@ -230,17 +241,26 @@ export function KnowledgeHubContent() {
                       </CardDescription>
                     </CardHeader>
                     <CardContent className='space-y-3'>
-                      <p className='text-sm text-slate-600 line-clamp-3 leading-relaxed'>
-                        {sim.input_data.goal}
-                      </p>
+                      {/* {sim.input_data.goal && (
+                        <p className='text-sm text-slate-600 line-clamp-3 leading-relaxed'>
+                          {sim.input_data.goal}
+                        </p>
+                      )} */}
                       <div className='flex items-center justify-between gap-2 flex-wrap'>
-                        <span className='inline-flex items-center rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary'>
-                          {sim.input_data.materialType}
-                        </span>
+                        {(sim.input_data.mineralType || sim.input_data.materialType) && (
+                          <span className='inline-flex items-center rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary'>
+                            {sim.input_data.mineralType || sim.input_data.materialType}
+                          </span>
+                        )}
                         <span className='text-xs text-slate-500'>
                           {(sim.ai_result.confidenceScore * 100).toFixed(0)}% confidence
                         </span>
                       </div>
+                      {sim.input_data.template && (
+                        <div className='text-xs text-slate-500'>
+                          Template: {sim.input_data.template}
+                        </div>
+                      )}
                       {sim.tags && sim.tags.length > 0 && (
                         <div className='flex flex-wrap gap-2 pt-2 border-t border-slate-100'>
                           {sim.tags.map((tag, idx) => (

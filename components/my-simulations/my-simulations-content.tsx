@@ -180,114 +180,116 @@ export function MySimulationsContent() {
   ).length;
 
   return (
-    <div className='min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-50'>
+    <div className='min-h-screen bg-gradient-to-b from-[#f8fefa] to-white'>
       <Navigation className='bg-white/95 backdrop-blur-sm' />
 
       {/* Main Content */}
       <div className='container mx-auto px-4 py-12 pt-24'>
         <div className='max-w-7xl mx-auto'>
           {/* Header */}
-          <div className='mb-8 flex justify-between items-start'>
-            <div className='space-y-2'>
-              <div className='flex items-center gap-3'>
-                <div className='p-3 rounded-lg bg-gradient-to-br from-primary to-primary/80 text-white shadow-lg'>
-                  <FolderKanban className='h-6 w-6' />
+          <div className='bg-white rounded-lg p-8 border border-slate-200 mb-6'>
+            <div className='flex justify-between items-start'>
+              <div className='space-y-2'>
+                <div className='flex items-center gap-3'>
+                  <div>
+                    <h1 className='text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent'>
+                      My Simulations
+                    </h1>
+                    <p className='text-sm text-muted-foreground mt-1'>
+                      Personal workspace • Manage your research
+                    </p>
+                    <p className='text-sm text-gray-600 mt-3 max-w-2xl leading-relaxed'>
+                      Access and manage all your simulation results in one place. View detailed
+                      reports, share your findings with the research community, or keep them
+                      private. Track your research progress and organize your simulations for easy
+                      reference.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h1 className='text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent'>
-                    My Simulations
-                  </h1>
-                  <p className='text-sm text-muted-foreground mt-1'>
-                    Personal workspace • Manage your research
-                  </p>
-                  <p className='text-sm text-gray-600 mt-3 max-w-2xl leading-relaxed'>
-                    Access and manage all your simulation results in one place. View detailed
-                    reports, share your findings with the research community, or keep them private.
-                    Track your research progress and organize your simulations for easy reference.
-                  </p>
+                <div className='flex gap-4 mt-4'>
+                  <button
+                    onClick={() => setStatusFilter('all')}
+                    className={`px-4 py-2 rounded-lg border shadow-sm transition-all cursor-pointer hover:shadow-md ${
+                      statusFilter === 'all'
+                        ? 'bg-primary/10 border-primary/50 shadow-md'
+                        : 'bg-white border-gray-200'
+                    }`}
+                  >
+                    <div
+                      className={`text-xs ${
+                        statusFilter === 'all' ? 'text-primary' : 'text-muted-foreground'
+                      }`}
+                    >
+                      Total
+                    </div>
+                    <div
+                      className={`text-lg font-semibold ${
+                        statusFilter === 'all' ? 'text-primary' : 'text-gray-900'
+                      }`}
+                    >
+                      {simulations.length}
+                    </div>
+                  </button>
+                  <button
+                    onClick={() => setStatusFilter('public')}
+                    className={`px-4 py-2 rounded-lg border shadow-sm transition-all cursor-pointer hover:shadow-md ${
+                      statusFilter === 'public'
+                        ? 'bg-green-100 border-green-400 shadow-md'
+                        : 'bg-green-50 border-green-200'
+                    }`}
+                  >
+                    <div
+                      className={`text-xs ${
+                        statusFilter === 'public'
+                          ? 'text-green-900 font-semibold'
+                          : 'text-green-700'
+                      }`}
+                    >
+                      Public
+                    </div>
+                    <div
+                      className={`text-lg font-semibold ${
+                        statusFilter === 'public' ? 'text-green-900' : 'text-green-900'
+                      }`}
+                    >
+                      {publicCount}
+                    </div>
+                  </button>
+                  <button
+                    onClick={() => setStatusFilter('private')}
+                    className={`px-4 py-2 rounded-lg border shadow-sm transition-all cursor-pointer hover:shadow-md ${
+                      statusFilter === 'private'
+                        ? 'bg-gray-200 border-gray-400 shadow-md'
+                        : 'bg-gray-100 border-gray-300'
+                    }`}
+                  >
+                    <div
+                      className={`text-xs ${
+                        statusFilter === 'private' ? 'text-gray-900 font-semibold' : 'text-gray-700'
+                      }`}
+                    >
+                      Private
+                    </div>
+                    <div
+                      className={`text-lg font-semibold ${
+                        statusFilter === 'private' ? 'text-gray-900' : 'text-gray-900'
+                      }`}
+                    >
+                      {privateCount}
+                    </div>
+                  </button>
                 </div>
               </div>
-              <div className='flex gap-4 mt-4'>
-                <button
-                  onClick={() => setStatusFilter('all')}
-                  className={`px-4 py-2 rounded-lg border shadow-sm transition-all cursor-pointer hover:shadow-md ${
-                    statusFilter === 'all'
-                      ? 'bg-primary/10 border-primary/50 shadow-md'
-                      : 'bg-white border-gray-200'
-                  }`}
-                >
-                  <div
-                    className={`text-xs ${
-                      statusFilter === 'all' ? 'text-primary' : 'text-muted-foreground'
-                    }`}
-                  >
-                    Total
-                  </div>
-                  <div
-                    className={`text-lg font-semibold ${
-                      statusFilter === 'all' ? 'text-primary' : 'text-gray-900'
-                    }`}
-                  >
-                    {simulations.length}
-                  </div>
-                </button>
-                <button
-                  onClick={() => setStatusFilter('public')}
-                  className={`px-4 py-2 rounded-lg border shadow-sm transition-all cursor-pointer hover:shadow-md ${
-                    statusFilter === 'public'
-                      ? 'bg-green-100 border-green-400 shadow-md'
-                      : 'bg-green-50 border-green-200'
-                  }`}
-                >
-                  <div
-                    className={`text-xs ${
-                      statusFilter === 'public' ? 'text-green-900 font-semibold' : 'text-green-700'
-                    }`}
-                  >
-                    Public
-                  </div>
-                  <div
-                    className={`text-lg font-semibold ${
-                      statusFilter === 'public' ? 'text-green-900' : 'text-green-900'
-                    }`}
-                  >
-                    {publicCount}
-                  </div>
-                </button>
-                <button
-                  onClick={() => setStatusFilter('private')}
-                  className={`px-4 py-2 rounded-lg border shadow-sm transition-all cursor-pointer hover:shadow-md ${
-                    statusFilter === 'private'
-                      ? 'bg-gray-200 border-gray-400 shadow-md'
-                      : 'bg-gray-100 border-gray-300'
-                  }`}
-                >
-                  <div
-                    className={`text-xs ${
-                      statusFilter === 'private' ? 'text-gray-900 font-semibold' : 'text-gray-700'
-                    }`}
-                  >
-                    Private
-                  </div>
-                  <div
-                    className={`text-lg font-semibold ${
-                      statusFilter === 'private' ? 'text-gray-900' : 'text-gray-900'
-                    }`}
-                  >
-                    {privateCount}
-                  </div>
-                </button>
-              </div>
+              <Button
+                variant='outline'
+                onClick={fetchSimulations}
+                disabled={loading}
+                className='flex items-center gap-2'
+              >
+                <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
+                Refresh
+              </Button>
             </div>
-            <Button
-              variant='outline'
-              onClick={fetchSimulations}
-              disabled={loading}
-              className='flex items-center gap-2'
-            >
-              <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
-              Refresh
-            </Button>
           </div>
 
           {/* Search and Filter Bar */}
@@ -373,9 +375,11 @@ export function MySimulationsContent() {
                           {sim.input_data.goal}
                         </p>
                         <div className='flex items-center gap-4 flex-wrap'>
-                          <span className='inline-flex items-center rounded-md bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary border border-primary/20'>
-                            {sim.input_data.materialType}
-                          </span>
+                          {sim.input_data.materialType ? (
+                            <span className='inline-flex items-center rounded-md bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary border border-primary/20'>
+                              {sim.input_data.materialType}
+                            </span>
+                          ) : null}
                           <div className='flex items-center gap-1.5 text-xs text-gray-600'>
                             <span className='font-medium'>Confidence:</span>
                             <span className='font-semibold text-primary'>

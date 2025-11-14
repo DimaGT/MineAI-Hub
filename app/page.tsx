@@ -29,12 +29,12 @@ const HomePage: React.FC = () => {
         </MaxWidthWrapper>
         <BackgroundBeams />
       </section>
-      <section className='w-full mt-10 md:mt-20'>
+      <section className='w-full my-10 md:my-20'>
         <InfiniteMovingCards pauseOnHover={false} speed='slow' />
       </section>
       <section>
-        <MaxWidthWrapper className='flex items-center flex-col gap-4 md:mt-20'>
-          <h2 className='text-4xl text-center font-medium'>Powerful Simulation Capabilities</h2>
+        <MaxWidthWrapper className='flex items-center flex-col gap-4 md:my-20'>
+        <h2 className='text-3xl md:text-4xl font-semibold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent'>Powerful Simulation Capabilities</h2>
           <p className='text-muted-foreground text-center'>
             Discover the advanced features that make GeoSim the leading platform for mineral
             processing simulations.
@@ -54,8 +54,7 @@ const HomePage: React.FC = () => {
           >
             <div className='flex flex-col gap-6 md:gap-8 items-center mb-8'>
               <div className='flex items-center gap-3'>
-                <Users className='h-8 w-8 text-primary' />
-                <h2 className='text-3xl md:text-4xl font-semibold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent'>
+                <h2 className='text-3xl md:text-4xl font-semibold text-black'>
                   Who This Is For
                 </h2>
               </div>
@@ -97,7 +96,8 @@ const HomePage: React.FC = () => {
       <section className='w-full mt-10 md:mt-20'>
         <MaxWidthWrapper>
           <div className='flex flex-col gap-4 items-center'>
-            <h2 className='text-4xl text-center font-medium'>Explore new features</h2>
+          <h2 className='text-3xl md:text-4xl font-semibold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent'>
+          Explore new features</h2>
             <div className='text-muted-foreground text-center'>
               <p>
                 GeoSim does everything possible to provide you with a convenient tool for managing
@@ -124,10 +124,9 @@ const HomePage: React.FC = () => {
           >
             <div className='flex flex-col gap-6 md:gap-8 items-center mb-8'>
               <div className='flex items-center gap-3'>
-                <Cpu className='h-8 w-8 text-primary' />
-                <h2 className='text-3xl md:text-4xl font-semibold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent'>
+                <h2 className='text-3xl md:text-4xl font-semibold text-black'>
                   The GeoSim Core
-                </h2>
+                </h2> 
               </div>
               <p className='text-muted-foreground text-center max-w-3xl text-lg'>
                 GeoSim&apos;s engine uses AI-augmented geochemical modeling to simulate mineral
@@ -136,7 +135,7 @@ const HomePage: React.FC = () => {
             </div>
             <Card className='border-2 border-primary/20 hover:border-primary/40 transition-colors duration-300 bg-gradient-to-br from-background to-muted/20'>
               <CardHeader>
-                <CardTitle className='text-xl font-semibold text-center'>
+                <CardTitle className='text-xl font-semibold text-center text-primary'>
                   Controlled Variables
                 </CardTitle>
               </CardHeader>
@@ -176,7 +175,7 @@ const HomePage: React.FC = () => {
       </section>
 
       <div className='h-[40rem] w-full rounded-md relative flex flex-col items-center justify-center antialiased'>
-        <div className='max-w-2xl mx-auto p-4'>
+        <div className='max-w-2xl mx-auto p-4 relative z-10'>
           <h1 className='relative z-10 text-lg md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-primary via-primary/90 to-primary/70  text-center font-sans font-bold'>
             Join GeoSim
           </h1>
